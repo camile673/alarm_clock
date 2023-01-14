@@ -1,0 +1,31 @@
+class AlarmClock {
+  constructor(name) {
+    this.name = name;
+    this.alarmTime = null;
+  }
+
+  setAlarm(hours, minutes) {
+    this.alarmTime = new Date();
+    this.alarmTime.setHours(hours);
+    this.alarmTime.setMinutes(minutes);
+    console.log(`Alarm set for ${this.name} at ${this.alarmTime.toLocaleTimeString()}.`);
+  }
+
+  checkAlarm() {
+    if (this.alarmTime === null) {
+      console.log(`No alarm set for ${this.name}.`);
+    } else {
+      const now = new Date();
+      if (now >= this.alarmTime) {
+        console.log(`Wake up! ${this.name} alarm is ringing!`);
+      } else {
+        console.log(`${this.name} alarm will ring at ${this.alarmTime.toLocaleTimeString()}.`);
+      }
+    }
+  }
+}
+
+// Usage
+const alarm = new AlarmClock("Morning");
+alarm.setAlarm(8, 30);
+alarm.checkAlarm();
